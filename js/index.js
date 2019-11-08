@@ -102,9 +102,13 @@ function makeCard(name) {
     $p.textContent =
     `${race} ${subJob} ${job}`
 
+    let $div = document.createElement("div");
+    $div.append($title);
+    $div.append($p)
+    $div.classList.add("result-text")
+
     $card.append($img)
-    $card.append($title)
-    $card.append($p)
+    $card.append($div)
 
     $cardHolder.append($card)
 }
