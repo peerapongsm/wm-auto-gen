@@ -1,0 +1,54 @@
+section {
+    text-align: center;
+}
+
+input {
+    width: 20em;
+    height: 2em;
+}
+
+button {
+    width: 7em;
+    height: 3em;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.filter {
+    display: flex;
+    justify-content: center;
+}
+
+.card_holder {
+    display: flex;
+    justify-content:center;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 0 0 80%;
+    flex-grow: 0;
+    background-color: white;
+    margin: .5rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+    text-align: center;
+}
+
+.card h1 {
+    color: black;
+    font-size: 24pt;
+    font-weight: bold;
+    padding: 0.3em 0.3em;
+}
+
+.card p {
+    font-size: 18pt;
+    padding: 0.3em 0.3em;
+}
+
+.card img {
+    margin-top: 1em;
+}
