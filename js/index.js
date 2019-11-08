@@ -28,7 +28,36 @@ const SUB_RACE = {
 
 const CLASS = ["Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk",
                "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"]
-
+const SUB_CLASS = {
+    "Barbarian": ["Berserker", "Totem Warrior", "Zealot", "Storm Herald", "Ancestral Guardian"],
+    "Bard": ["College of Lore", "College of Valor", "College of Glarmour",
+              "College of Swords", "College of Whispers"],
+    "Cleric": ["Knowledge Domain", "Life Domain", "Light Domain", "Nature Domain",
+               "Tempest Domain", "Trickery Domain", "War Domain", "Grave Domain",
+               "Forge Domain", "Arcana Domain", "Order Domain"],
+    "Druid": ["Circle of the Land", "Circle of the Moon",
+              "Circle of Dreams", "Circle of the Shepherd",
+              "Circle of Spores" ],
+    "Fighter": ["Champion", "Battle Master", "Eldricth Knight",
+                "Samurai", "Cavalier", "Arcane Archer"],
+    "Monk": ["Way of the Open Hand", "Way of Shadow", "Way of the Four Elements",
+             "Way of the Long Death", "Way of the Drunken Master",
+             "Way of the Kensei", "Way of the Sun Soul"],
+    "Paladin": ["Oath of Devotion", "Oath of the Ancients", "Oath of Vengence",
+                "Oath of Conquest", "Oath of Redemption"],
+    "Ranger": ["Hunter", "Beast Master", "Gloom Stalker", "Horizon Walker",
+               "Monster Slayer"],
+    "Rogue": ["Thief", "Assassin", "Arcane Trickster", "Swashbuckler",
+              "Mastermind", "Inquisitive", "Scout"],
+    "Sorceror": ["Draconic Bloodline", "Wild Magic", "Divine Soul",
+                 "Shadow Magic", "Storm Sorcery"],
+    "Warlock": ["Archfey", "Great Old One", "Fiend",
+                "Undying", "Celestial", "Hexblade"],
+    "Wizard": ["Abjuration", "Conjuration", "Divinition",
+               "Enchantment", "Evocation", "Illusion",
+               "Illusion", "Necromancy", "Transmutation",
+               "War"]
+}
 
 function fillCard() {
     let $cardHolder = document.getElementById('card_holder')
@@ -50,14 +79,22 @@ function makeCard(name) {
     let $card = document.createElement("div")
     $card.classList.add("card")
 
-    let raceIndex = getRandomInt(RACE.length - 1);
-    let race = RACE[raceIndex];
+    let race = RACE[getRandomInt(RACE.length - 1)];
 
-    if (Object.keys(SUB_RACE).includes(RACE[raceIndex])) {
-        race = SUB_RACE[RACE[raceIndex]][getRandomInt(SUB_RACE[RACE[raceIndex]].length - 1)];
+    if (Object.keys(SUB_RACE).includes(race)) {
+        race = SUB_RACE[race][getRandomInt(SUB_RACE[race].length - 1)];
     }
 
     let job = CLASS[getRandomInt(CLASS.length -1)]
+    let subJob = SUB_CLASS[job][getRandomInt(SUB_CLASS[job].length - 1)];
+
+    let $title = document.createElement("h1")
+    $title.textContent = name
+
+    let $p = document.createElement("p")
+
+    $p.textContent =
+    `${race} ${subJob} ${job}`
 
 
     // let $img = document.createElement("img")
@@ -66,12 +103,7 @@ function makeCard(name) {
     //
     // $a.append($img)
 
-    let $title = document.createElement("h1")
-    $title.textContent = name
 
-    let $p = document.createElement("p")
-    $p.textContent =
-    `${race} ${job}`
 
     $card.append($title)
     $card.append($p)
