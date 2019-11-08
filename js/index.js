@@ -1,7 +1,7 @@
 'use strict';
 const RACE =
 ["Dwarf", "Elf" , "Halfling", "Human", "Dragonborn",
-"Gnome", "Half-Elf", "Half-Orc", "Teifling", "Aasimar",
+"Gnome", "Half-Elf", "Half-Orc", "Tiefling", "Aasimar",
 "Firbolg", "Goliath", "Kenku", "Lizardfolk", "Tabaxi",
 "Triton", "Genasi", "Changeling", "Shifter", "Minotaur"]
 
@@ -38,7 +38,7 @@ const SUB_CLASS = {
     "Druid": ["Circle of the Land", "Circle of the Moon",
               "Circle of Dreams", "Circle of the Shepherd",
               "Circle of Spores" ],
-    "Fighter": ["Champion", "Battle Master", "Eldricth Knight",
+    "Fighter": ["Champion", "Battle Master", "Eldritch Knight",
                 "Samurai", "Cavalier", "Arcane Archer"],
     "Monk": ["Way of the Open Hand", "Way of Shadow", "Way of the Four Elements",
              "Way of the Long Death", "Way of the Drunken Master",
@@ -49,7 +49,7 @@ const SUB_CLASS = {
                "Monster Slayer"],
     "Rogue": ["Thief", "Assassin", "Arcane Trickster", "Swashbuckler",
               "Mastermind", "Inquisitive", "Scout"],
-    "Sorceror": ["Draconic Bloodline", "Wild Magic", "Divine Soul",
+    "Sorcerer": ["Draconic Bloodline", "Wild Magic", "Divine Soul",
                  "Shadow Magic", "Storm Sorcery"],
     "Warlock": ["Archfey", "Great Old One", "Fiend",
                 "Undying", "Celestial", "Hexblade"],
@@ -81,6 +81,12 @@ function makeCard(name) {
 
     let race = RACE[getRandomInt(RACE.length - 1)];
 
+    let $img = document.createElement("img")
+    $img.src = `img/${race}.png`
+    $img.alt = race
+
+
+
     if (Object.keys(SUB_RACE).includes(race)) {
         race = SUB_RACE[race][getRandomInt(SUB_RACE[race].length - 1)];
     }
@@ -96,15 +102,7 @@ function makeCard(name) {
     $p.textContent =
     `${race} ${subJob} ${job}`
 
-
-    // let $img = document.createElement("img")
-    // $img.src = data.img
-    // $img.alt = data.name
-    //
-    // $a.append($img)
-
-
-
+    $card.append($img)
     $card.append($title)
     $card.append($p)
 
